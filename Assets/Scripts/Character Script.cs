@@ -10,12 +10,13 @@ public class CharacterScript : MonoBehaviour
         
     }
 
-    [SerializeField]
-    Animator animator;
-
     // Update is called once per frame
     void Update()
     {
+        Animator animator = this.gameObject.GetComponent<Animator>();
+        Transform transform = this.transform;
+
+
         if (Input.GetKeyDown(KeyCode.J))
         {
             animator.SetTrigger("jumpTrigger");
@@ -24,6 +25,10 @@ public class CharacterScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             animator.SetBool("isRunForward", true);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(0, 0, 0.01f);
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
@@ -34,6 +39,10 @@ public class CharacterScript : MonoBehaviour
         {
             animator.SetBool("isRunBackward", true);
         }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(0, 0, -0.01f);
+        }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             animator.SetBool("isRunBackward", false);
@@ -43,6 +52,10 @@ public class CharacterScript : MonoBehaviour
         {
             animator.SetBool("isRunLeft", true);
         }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(-0.01f, 0, 0);
+        }
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             animator.SetBool("isRunLeft", false);
@@ -51,6 +64,10 @@ public class CharacterScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             animator.SetBool("isRunRight", true);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(0.01f, 0, 0);
         }
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
