@@ -3433,7 +3433,6 @@ GameObject:
   - component: {fileID: 5531949668427531131}
   - component: {fileID: 3681195131800347867}
   - component: {fileID: 1481383489388567262}
-  - component: {fileID: 9179136148269070049}
   m_Layer: 0
   m_Name: Minato
   m_TagString: Untagged
@@ -3714,19 +3713,6 @@ MonoBehaviour:
       m_RotationOrder: 4
     CurveXRangeDegree: 90
     CurveYRangeDegree: 10
---- !u!114 &9179136148269070049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839989929222467474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 261aeca218a7e4df88d629ac62ee03f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4896678959162154740}
 --- !u!1 &3856584294278012313
 GameObject:
   m_ObjectHideFlags: 0
