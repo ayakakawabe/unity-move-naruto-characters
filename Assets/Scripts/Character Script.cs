@@ -18,7 +18,7 @@ public class CharacterScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            animator.SetTrigger("isJump");
+            animator.SetTrigger("jumpTrigger");
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
