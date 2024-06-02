@@ -7,17 +7,16 @@ public class RotateController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    [SerializeField]
+    public GameObject center;
     public float angle = 20f;
 
     // Update is called once per frame
     void Update()
     {
         Transform transform = this.transform;
-        GameObject center=transform.parent.GetChild(1).gameObject;
 
         if (Input.GetKey(KeyCode.Comma))
         {
@@ -28,5 +27,4 @@ public class RotateController : MonoBehaviour
             transform.RotateAround(center.transform.position, Vector3.up, -angle * Time.deltaTime);
         }
     }
-
 }

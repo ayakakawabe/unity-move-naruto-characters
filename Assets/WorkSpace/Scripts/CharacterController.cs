@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserController : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -10,11 +10,13 @@ public class UserController : MonoBehaviour
         
     }
 
+    [SerializeField]
+    public float speed = 0.01f;
+
     // Update is called once per frame
     void Update()
     {
-        Transform transform = this.transform;
-        Animator characterAnimator = transform.GetChild(1).gameObject.GetComponent<Animator>();
+        Animator characterAnimator = this.GetComponent<Animator>();
 
         if (Input.GetKeyDown(KeyCode.J))
         {
@@ -27,7 +29,7 @@ public class UserController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(0, 0, -0.01f);
+            transform.Translate(0, 0, speed);
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
@@ -40,7 +42,7 @@ public class UserController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(0, 0, 0.01f);
+            transform.Translate(0, 0, -speed);
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
@@ -53,7 +55,7 @@ public class UserController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(0.01f, 0, 0);
+            transform.Translate(-speed, 0, 0);
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
@@ -66,12 +68,11 @@ public class UserController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(-0.01f, 0, 0);
+            transform.Translate(speed, 0, 0);
         }
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             characterAnimator.SetBool("isRunRight", false);
         }
-
     }
 }
