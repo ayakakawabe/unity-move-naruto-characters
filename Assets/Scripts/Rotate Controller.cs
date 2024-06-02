@@ -11,7 +11,7 @@ public class RotateController : MonoBehaviour
     }
 
     [SerializeField]
-    public float speed = 20f;
+    public float angle = 20f;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +19,14 @@ public class RotateController : MonoBehaviour
         Transform transform = this.transform;
         GameObject center=transform.parent.GetChild(1).gameObject;
 
-        transform.RotateAround(center.transform.position, Vector3.up, speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.Comma))
+        {
+            transform.RotateAround(center.transform.position, Vector3.up, angle * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.Period))
+        {
+            transform.RotateAround(center.transform.position, Vector3.up, -angle * Time.deltaTime);
+        }
     }
 
 }
