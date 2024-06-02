@@ -18,13 +18,21 @@ public class RotateController : MonoBehaviour
     {
         Transform transform = this.transform;
 
-        if (Input.GetKey(KeyCode.Comma))
+        if (Input.GetKey(KeyCode.H))
         {
             transform.RotateAround(center.transform.position, Vector3.up, angle * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.Period))
+        if (Input.GetKey(KeyCode.L))
         {
-            transform.RotateAround(center.transform.position, Vector3.up, -angle * Time.deltaTime);
+            transform.RotateAround(center.transform.position, Vector3.down, angle * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.J))
+        {
+            transform.RotateAround(center.transform.position, Vector3.left, -angle * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.K))
+        {
+            transform.RotateAround(center.transform.position, Vector3.right, -angle * Time.deltaTime);
         }
     }
 }

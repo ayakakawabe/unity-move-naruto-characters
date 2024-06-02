@@ -4,75 +4,92 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+    [SerializeField]
+    public float speed = 0.05f;
+    public Transform cameraTransform;
+    public Vector3 startCameraPosition;
+    public Vector3 startCameraRotate;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        startCameraPosition = cameraTransform.position;
+        startCameraRotate = cameraTransform.localEulerAngles;
     }
 
-    [SerializeField]
-    public float speed = 0.01f;
 
     // Update is called once per frame
     void Update()
     {
         Animator characterAnimator = this.GetComponent<Animator>();
 
-        if (Input.GetKeyDown(KeyCode.J))
+        KeyCode forwardKey = KeyCode.UpArrow;
+        KeyCode backwardKey = KeyCode.DownArrow;
+        KeyCode leftKey = KeyCode.LeftArrow;
+        KeyCode rightKey = KeyCode.RightArrow;
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             characterAnimator.SetTrigger("jumpTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(leftKey) || Input.GetKey(rightKey))
         {
             characterAnimator.SetBool("isRunForward", true);
+            if(Input.GetKey(forwardKey) && Input.GetKey(leftKey) || Input.GetKey(backwardKey) && Input.GetKey(rightKey))
+            {
+                characterAnimator.SetBool("isRunLeft", true);
+            }
+            else
+            {
+                characterAnimator.SetBool("isRunLeft", false);
+            }
+            if (Input.GetKey(forwardKey) && Input.GetKey(rightKey) || Input.GetKey(backwardKey) && Input.GetKey(leftKey))
+            {
+                characterAnimator.SetBool("isRunRight", true);
+            }
+            else
+            {
+                characterAnimator.SetBool("isRunRight", false);
+            }
         }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Translate(0, 0, speed);
-        }
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        else
         {
             characterAnimator.SetBool("isRunForward", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            characterAnimator.SetBool("isRunBackward", true);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(0, 0, -speed);
-        }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            characterAnimator.SetBool("isRunBackward", false);
-        }
+        move(forwardKey, backwardKey, leftKey, rightKey);
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            characterAnimator.SetBool("isRunLeft", true);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(-speed, 0, 0);
-        }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            characterAnimator.SetBool("isRunLeft", false);
-        }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            characterAnimator.SetBool("isRunRight", true);
+            //this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, cameraTransform.localEulerAngles.y, this.transform.localEulerAngles.z);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+    }
+
+    public void move(KeyCode forwardKey,KeyCode backwardKey,KeyCode leftKey,KeyCode rightKey)
+    {
+        Transform characterParentTransform = this.transform.parent.transform;
+
+        if (Input.GetKey(forwardKey))
         {
-            transform.Translate(speed, 0, 0);
+            characterParentTransform.Translate(0, 0, -speed);
+            this.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKey(backwardKey))
         {
-            characterAnimator.SetBool("isRunRight", false);
+            characterParentTransform.Translate(0, 0, speed);
+            this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        if (Input.GetKey(leftKey))
+        {
+            characterParentTransform.Translate(speed, 0, 0);
+            this.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+        }
+        if (Input.GetKey(rightKey))
+        {
+            characterParentTransform.Translate(-speed, 0, 0);
+            this.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
     }
 }
