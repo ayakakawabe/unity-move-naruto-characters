@@ -20,6 +20,7 @@ public class CharacterScript : MonoBehaviour
         {
             animator.SetTrigger("isJump");
         }
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             animator.SetBool("isRunForward", true);
@@ -28,11 +29,32 @@ public class CharacterScript : MonoBehaviour
         {
             animator.SetBool("isRunForward", false);
         }
-        //AnimatorStateInfo animatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        //if (animatorStateInfo.normalizedTime > 10)
-        //{
 
-        //    animator.enabled = false;
-        //}
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            animator.SetBool("isRunBackward", true);
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            animator.SetBool("isRunBackward", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            animator.SetBool("isRunLeft", true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            animator.SetBool("isRunLeft", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            animator.SetBool("isRunRight", true);
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            animator.SetBool("isRunRight", false);
+        }
     }
 }
