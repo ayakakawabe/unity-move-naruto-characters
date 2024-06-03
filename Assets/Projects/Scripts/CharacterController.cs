@@ -6,15 +6,10 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField]
     public float speed = 0.05f;
-    public Transform cameraTransform;
-    public Vector3 startCameraPosition;
-    public Vector3 startCameraRotate;
 
     // Start is called before the first frame update
     void Start()
     {
-        startCameraPosition = cameraTransform.position;
-        startCameraRotate = cameraTransform.localEulerAngles;
     }
 
 
@@ -73,23 +68,23 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKey(forwardKey))
         {
-            characterParentTransform.Translate(0, 0, -speed);
-            this.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
-        if (Input.GetKey(backwardKey))
-        {
             characterParentTransform.Translate(0, 0, speed);
             this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
+        if (Input.GetKey(backwardKey))
+        {
+            characterParentTransform.Translate(0, 0, -speed);
+            this.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
         if (Input.GetKey(leftKey))
         {
-            characterParentTransform.Translate(speed, 0, 0);
-            this.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            characterParentTransform.Translate(-speed, 0, 0);
+            this.transform.rotation = Quaternion.Euler(0f, 270f, 0f);
         }
         if (Input.GetKey(rightKey))
         {
-            characterParentTransform.Translate(-speed, 0, 0);
-            this.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+            characterParentTransform.Translate(speed, 0, 0);
+            this.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
     }
 }
