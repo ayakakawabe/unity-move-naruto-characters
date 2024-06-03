@@ -310,10 +310,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -646481518695035523, guid: b00ddb8d8d54c4c519f110ce00c6b93c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5de3c88550e8444208ad69b910ed8b5e, type: 2}
+    - target: {fileID: -93644311446669682, guid: b00ddb8d8d54c4c519f110ce00c6b93c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5de3c88550e8444208ad69b910ed8b5e, type: 2}
     - target: {fileID: 919132149155446097, guid: b00ddb8d8d54c4c519f110ce00c6b93c, type: 3}
       propertyPath: m_Name
       value: HokageBase
       objectReference: {fileID: 0}
+    - target: {fileID: 1746654310787607633, guid: b00ddb8d8d54c4c519f110ce00c6b93c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5de3c88550e8444208ad69b910ed8b5e, type: 2}
+    - target: {fileID: 8089062573417005363, guid: b00ddb8d8d54c4c519f110ce00c6b93c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5de3c88550e8444208ad69b910ed8b5e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
